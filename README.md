@@ -16,6 +16,12 @@ to answer user queries based on a custom knowledge base.
 4. Top relevant chunks retrieved
 5. Passed to LLM (OpenAI) for final answer
 
+## 🎥 Demo Video
+
+Click below to watch the working demo of the project:
+
+🔗 [Watch Demo Video](https://drive.google.com/file/d/1C3Qb1hhH6kbHDXNA2ZYottkl0UH9o9uT/view?usp=sharing)
+
 ## 🛠 Tech Stack
 - Python
 - OpenAI API

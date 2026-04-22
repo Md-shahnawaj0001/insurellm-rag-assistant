@@ -1,26 +1,28 @@
-# 🤖 Insurellm RAG Assistant
+## 🚀 InsureLLM RAG Assistant
 
-This is a Retrieval-Augmented Generation (RAG) based AI assistant.
+An AI-powered assistant that uses Retrieval-Augmented Generation (RAG) 
+to answer user queries based on a custom knowledge base.
 
-## 🚀 Features
-- Knowledge base search
+## 🔧 Features
 - Semantic search using embeddings
-- PDF upload support
-- Chat interface (Gradio)
+- Document-based question answering
+- PDF knowledge ingestion
+- Chat interface using Gradio
 
-## 📁 Project Structure
-- knowledge_base/
-- app.py
+## ⚙️ How it works
+1. Documents are converted into embeddings
+2. Stored in FAISS vector database
+3. User query is embedded
+4. Top relevant chunks retrieved
+5. Passed to LLM (OpenAI) for final answer
 
 ## 🛠 Tech Stack
 - Python
-- OpenAI
-- Sentence Transformers
+- OpenAI API
 - FAISS
+- Sentence Transformers
 - Gradio
 
-## ▶️ Run Project
-
-```bash
-pip install -r requirements.txt
+## ▶️ Run locally
+pip install -r requirements.txt  
 python app.py

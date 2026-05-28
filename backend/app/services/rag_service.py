@@ -1,14 +1,14 @@
-from backend.app.db.database import SessionLocal
-from backend.app.db.models import ChatSession, Message, Document
+from app.db.database import SessionLocal
+from app.db.models import ChatSession, Message, Document
 
 import os
 import glob
 import uuid
 
-from backend.app.services.embedding_service import get_embeddings
-from backend.app.services.vector_store import collection
-from backend.app.services.pdf_service import read_pdf
-from backend.app.services.llm_service import (
+from app.services.embedding_service import get_embeddings
+from app.services.vector_store import collection
+from app.services.pdf_service import read_pdf
+from app.services.llm_service import (
     generate_response,
     generate_chat_title
 )

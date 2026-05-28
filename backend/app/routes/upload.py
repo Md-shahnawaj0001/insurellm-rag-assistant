@@ -1,6 +1,6 @@
 from fastapi import APIRouter, UploadFile, File, Depends
-from backend.app.services.rag_service import upload_pdf
-from backend.app.dependencies.auth import get_current_user
+from app.services.rag_service import upload_pdf
+from app.dependencies.auth import get_current_user
 
 router = APIRouter()
 

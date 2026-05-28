@@ -1,9 +1,19 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
-from backend.app.routes import chat, upload, reset, history, documents, auth
-from backend.app.db.database import engine, Base
-from backend.app.db import models
 
+from app.routes import (
+    chat,
+    upload,
+    reset,
+    history,
+    documents,
+    auth
+)
+
+from app.db.database import engine, Base
+from app.db import models
+
+# Create tables
 Base.metadata.create_all(bind=engine)
 
 app = FastAPI(
@@ -11,7 +21,7 @@ app = FastAPI(
     version="1.0.0"
 )
 
-# CORS FIX
+# CORS
 app.add_middleware(
     CORSMiddleware,
     allow_origins=[
@@ -23,6 +33,7 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
+# Routes
 app.include_router(chat.router)
 app.include_router(upload.router)
 app.include_router(reset.router)

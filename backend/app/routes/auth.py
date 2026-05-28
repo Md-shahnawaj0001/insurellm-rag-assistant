@@ -1,8 +1,8 @@
 from fastapi import APIRouter
-from backend.app.db.database import SessionLocal
-from backend.app.db.models import User
-from backend.app.models.chat_models import SignupRequest, LoginRequest
-from backend.app.services.auth_service import (
+from app.db.database import SessionLocal
+from app.db.models import User
+from app.models.chat_models import SignupRequest, LoginRequest
+from app.services.auth_service import (
     hash_password,
     verify_password,
     create_access_token

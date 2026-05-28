@@ -1,7 +1,7 @@
 from fastapi import APIRouter, Depends
-from backend.app.models.chat_models import ChatRequest
-from backend.app.services.rag_service import chat
-from backend.app.dependencies.auth import get_current_user
+from app.models.chat_models import ChatRequest
+from app.services.rag_service import chat
+from app.dependencies.auth import get_current_user
 
 router = APIRouter()
 

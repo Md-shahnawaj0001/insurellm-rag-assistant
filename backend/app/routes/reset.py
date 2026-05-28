@@ -1,5 +1,5 @@
 from fastapi import APIRouter
-from backend.app.services.vector_store import collection
+from app.services.vector_store import collection
 
 router = APIRouter()
 

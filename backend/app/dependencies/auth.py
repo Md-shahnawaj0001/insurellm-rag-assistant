@@ -2,9 +2,9 @@ from fastapi import Depends, HTTPException
 from fastapi.security import HTTPBearer, HTTPAuthorizationCredentials
 from jose import jwt, JWTError
 
-from backend.app.services.auth_service import SECRET_KEY, ALGORITHM
-from backend.app.db.database import SessionLocal
-from backend.app.db.models import User
+from app.services.auth_service import SECRET_KEY, ALGORITHM
+from app.db.database import SessionLocal
+from app.db.models import User
 
 security = HTTPBearer()
 

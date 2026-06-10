@@ -37,9 +37,19 @@ def chunk_text(text, source, chunk_size=1000, overlap=200):
 
 
 def load_documents():
-    base_path = "knowledge_base"
+
+    base_path = os.path.abspath(
+        os.path.join(
+            os.path.dirname(__file__),
+            "../../../knowledge_base"
+        )
+    )
+
+    print("LOADING FROM =", base_path)
+    print("EXISTS =", os.path.exists(base_path))
 
     if not os.path.exists(base_path):
+        print("Knowledge base folder not found!")
         return
 
     for section in os.listdir(base_path):
@@ -236,6 +246,20 @@ def chat(
 
     if pdf_question:
 
+        db = SessionLocal()
+
+        uploaded_docs = db.query(Document).filter(
+            Document.user_id == user_id
+        ).all()
+
+        db.close()
+
+        if not uploaded_docs:
+            return {
+                "response": "No PDF has been uploaded yet. Please upload a PDF first.",
+                "sources": []
+            }
+
         contexts, sources, scores = retrieve_context(
             user_message,
             user_id,
@@ -243,11 +267,10 @@ def chat(
         )
 
         if len(contexts) == 0:
-
-            contexts, sources, scores = retrieve_context(
-                user_message,
-                user_id
-            )
+            return {
+                "response": "No PDF content was found for your uploaded documents.",
+                "sources": []
+            }
 
     else:
 
@@ -256,10 +279,10 @@ def chat(
             user_id
         )
 
-    if len(contexts) == 0:
-        return {
-            "response": "No relevant documents found."
-        }
+        if len(contexts) == 0:
+            return {
+                "response": "No relevant documents found."
+            }
 
     context_text = "\n\n".join(contexts)
 
@@ -366,4 +389,7 @@ QUESTION:
         }
 
 
-load_documents()
+if collection.count() == 0:
+    load_documents()
+
+print("DOC COUNT =", collection.count())

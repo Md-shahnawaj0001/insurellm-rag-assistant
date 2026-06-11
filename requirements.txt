@@ -1,19 +1,18 @@
 fastapi
 uvicorn[standard]
 
-python-multipart
 python-dotenv
+python-multipart
 
 sqlalchemy
-pydantic
+psycopg2-binary
+
+openai
 
 chromadb
-
 sentence-transformers
 torch
 numpy
-
-openai
 
 pypdf
 

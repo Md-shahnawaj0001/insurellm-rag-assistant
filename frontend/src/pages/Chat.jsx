@@ -1,3 +1,4 @@
+const API_URL = import.meta.env.VITE_API_URL
 import { useState, useEffect, useRef } from "react"
 import axios from "axios"
 import { useNavigate } from "react-router-dom"
@@ -41,7 +42,7 @@ function Chat() {
   const fetchHistory = async () => {
     try {
       const response = await axios.get(
-        "http://127.0.0.1:8000/history",
+        "`${API_URL}/history`",
         {
           headers: {
             Authorization: `Bearer ${token}`
@@ -59,7 +60,7 @@ function Chat() {
   const fetchDocuments = async () => {
     try {
       const response = await axios.get(
-        "http://127.0.0.1:8000/documents",
+        "`${API_URL}/documents`",
         {
           headers: {
             Authorization: `Bearer ${token}`
@@ -77,7 +78,7 @@ function Chat() {
   const loadChat = async (id) => {
     try {
       const response = await axios.get(
-        `http://127.0.0.1:8000/history/${id}`,
+        `${API_URL}/history/${id}`,
         {
           headers: {
             Authorization: `Bearer ${token}`
@@ -97,7 +98,7 @@ function Chat() {
   const handleDeleteChat = async (id) => {
     try {
       await axios.delete(
-        `http://127.0.0.1:8000/history/${id}`,
+        `${API_URL}/history/${id}`,
         {
           headers: {
             Authorization: `Bearer ${token}`
@@ -125,7 +126,7 @@ function Chat() {
 
     try {
       await axios.put(
-        `http://127.0.0.1:8000/history/${id}`,
+        `${API_URL}/history/${id}`,
         {
           title: newTitle
         },
@@ -147,7 +148,7 @@ function Chat() {
   const handleDeleteDocument = async (id) => {
     try {
       await axios.delete(
-        `http://127.0.0.1:8000/documents/${id}`,
+        `${API_URL}/documents/${id}`,
         {
           headers: {
             Authorization: `Bearer ${token}`
@@ -225,7 +226,7 @@ function Chat() {
 
     try {
       await axios.post(
-        "http://127.0.0.1:8000/upload-pdf",
+        `${API_URL}/upload-pdf`,
         formData,
         {
           headers: {
@@ -256,7 +257,7 @@ function Chat() {
 
     try {
       const response = await axios.post(
-        "http://127.0.0.1:8000/chat",
+        `${API_URL}/chat`,
         {
           message,
           history: messages,

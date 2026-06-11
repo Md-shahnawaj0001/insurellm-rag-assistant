@@ -2,6 +2,7 @@ import { useState } from "react"
 import axios from "axios"
 import { useNavigate, Link } from "react-router-dom"
 import toast from "react-hot-toast"
+const API_URL = import.meta.env.VITE_API_URL
 
 function Signup() {
   const navigate = useNavigate()
@@ -15,7 +16,7 @@ function Signup() {
 
     try {
       const response = await axios.post(
-        "http://127.0.0.1:8000/signup",
+          `${API_URL}/signup`,
         {
           name,
           email,

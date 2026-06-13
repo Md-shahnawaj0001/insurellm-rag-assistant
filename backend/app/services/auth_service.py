@@ -1,25 +1,27 @@
 from datetime import datetime, timedelta
 from jose import jwt
-from passlib.context import CryptContext
+import hashlib
 
 SECRET_KEY = "insurellm_super_secret_key"
 ALGORITHM = "HS256"
 ACCESS_TOKEN_EXPIRE_MINUTES = 60
 
-pwd_context = CryptContext(
-    schemes=["bcrypt"],
-    deprecated="auto"
-)
-
 
 def hash_password(password: str):
-    return pwd_context.hash(password)
+    return hashlib.sha256(
+        password.encode()
+    ).hexdigest()
 
 
-def verify_password(plain_password: str, hashed_password: str):
-    return pwd_context.verify(
-        plain_password,
-        hashed_password
+def verify_password(
+    plain_password: str,
+    hashed_password: str
+):
+    return (
+        hashlib.sha256(
+            plain_password.encode()
+        ).hexdigest()
+        == hashed_password
     )
 
 

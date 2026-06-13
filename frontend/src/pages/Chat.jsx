@@ -42,7 +42,7 @@ function Chat() {
   const fetchHistory = async () => {
     try {
       const response = await axios.get(
-        "`${API_URL}/history`",
+        `${API_URL}/history`,
         {
           headers: {
             Authorization: `Bearer ${token}`
@@ -60,7 +60,7 @@ function Chat() {
   const fetchDocuments = async () => {
     try {
       const response = await axios.get(
-        "`${API_URL}/documents`",
+        `${API_URL}/documents`,
         {
           headers: {
             Authorization: `Bearer ${token}`
